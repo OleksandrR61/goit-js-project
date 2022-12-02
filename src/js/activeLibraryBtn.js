@@ -1,7 +1,9 @@
 import { getElement } from "./getElement";
 
 export function activeLibraryBtn() {
-    getElement(".header__libraryListBunnon").addEventListener('click', onClick);
+    if (getElement(".header__libraryListBunnon")) {
+        getElement(".header__libraryListBunnon").addEventListener('click', onClick);
+    }
 }
 
 function onClick(event) {
