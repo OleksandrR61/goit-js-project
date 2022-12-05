@@ -37,10 +37,16 @@ export function markupPagination() {
         document.querySelector('.pagination__item8').style.display = "none";
     }
 
-    if (filmsApiServise.getPage() + 2 < filmsApiServise.getTotalPages()) {
+    if (filmsApiServise.getPage() + 3 < filmsApiServise.getTotalPages()) {
         document.querySelector('.pagination__item9').style.display = "block";
     } else {
         document.querySelector('.pagination__item9').style.display = "none";
+    }
+
+    if (filmsApiServise.getPage() != filmsApiServise.getTotalPages()) {
+        document.querySelector('.pagination__item10').style.display = "block";
+    } else {
+        document.querySelector('.pagination__item10').style.display = "none";
     }
 
 
