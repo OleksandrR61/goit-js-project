@@ -1,0 +1,14 @@
+.pagination__list {
+    display: flex;
+}
+
+.pagination__item {
+    margin-right: 25px;
+    
+}
+
+.pagination__button,
+.pagination__currentPage {
+    background-color: sandybrown;
+    padding: 25px;
+}

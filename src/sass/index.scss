@@ -1,5 +1,12 @@
-@import './common';
-@import './variables';
-@import './main';
+@import './base/common';
+
+@import './utils/mixins';
+@import './utils/variables';
 
 @import './header';
+@import './footer';
+@import './loader';
+@import './modal';
+@import './pagination';
+@import './film-card.scss';
+@import './modal';
