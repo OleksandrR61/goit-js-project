@@ -13,6 +13,12 @@ export function markupPagination() {
         document.querySelector('.pagination__item2').style.display = "block";
     }
 
+    if (filmsApiServise.getPage() < 5) {
+        document.querySelector('.pagination__item3').style.display = "none";
+    } else {
+        document.querySelector('.pagination__item3').style.display = "block";
+    }
+
     document.querySelector('.pagination__button3').textContent = `${filmsApiServise.getPage() - 2}`;
     document.querySelector('.pagination__button4').textContent = `${filmsApiServise.getPage() - 1}`;
     document.querySelector('.pagination__currentPage').textContent = `${filmsApiServise.getPage()}`;
