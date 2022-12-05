@@ -1,6 +1,18 @@
 import {filmsApiServise} from '../../index';
 
 export function markupPagination() {
+    if (filmsApiServise.getPage() === 1) {
+        document.querySelector('.pagination__button1').disabled = true;
+    } else {
+        document.querySelector('.pagination__button1').disabled = false;
+    }
+
+    if (filmsApiServise.getPage() === 1) {
+        document.querySelector('.pagination__item2').style.display = "none";
+    } else {
+        document.querySelector('.pagination__item2').style.display = "block";
+    }
+
     document.querySelector('.pagination__button3').textContent = `${filmsApiServise.getPage() - 2}`;
     document.querySelector('.pagination__button4').textContent = `${filmsApiServise.getPage() - 1}`;
     document.querySelector('.pagination__currentPage').textContent = `${filmsApiServise.getPage()}`;
