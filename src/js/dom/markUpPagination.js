@@ -32,9 +32,9 @@ export function markupPagination() {
     }
 
     if (filmsApiServise.getPage() + 1 < filmsApiServise.getTotalPages()) {
-        document.querySelector('.pagination__item8').style.display = "none";
-    } else {
         document.querySelector('.pagination__item8').style.display = "block";
+    } else {
+        document.querySelector('.pagination__item8').style.display = "none";
     }
 
     if (filmsApiServise.getPage() + 1 < filmsApiServise.getTotalPages()) {
