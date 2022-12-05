@@ -13,25 +13,31 @@ export function markupPagination() {
         document.querySelector('.pagination__item2').style.display = "block";
     }
 
-    if (filmsApiServise.getPage() < 5) {
-        document.querySelector('.pagination__item3').style.display = "none";
-    } else {
+    if (filmsApiServise.getPage() > 4) {
         document.querySelector('.pagination__item3').style.display = "block";
-    }
-
-    if (filmsApiServise.getPage() < 4) {
-        document.querySelector('.pagination__item4').style.display = "none";
     } else {
-        document.querySelector('.pagination__item4').style.display = "block";
+        document.querySelector('.pagination__item3').style.display = "none";
     }
 
-    if (filmsApiServise.getPage() < filmsApiServise.getTotalPages()) {
+    if (filmsApiServise.getPage() > 3 ) {
+        document.querySelector('.pagination__item4').style.display = "block";
+    } else {
+        document.querySelector('.pagination__item4').style.display = "none";
+    }
+
+    if (filmsApiServise.getPage() > 2 ) {
+        document.querySelector('.pagination__item5').style.display = "block";
+    } else {
+        document.querySelector('.pagination__item5').style.display = "none";
+    }
+
+    if (filmsApiServise.getPage() + 1 < filmsApiServise.getTotalPages()) {
         document.querySelector('.pagination__item7').style.display = "block";
     } else {
         document.querySelector('.pagination__item7').style.display = "none";
     }
 
-    if (filmsApiServise.getPage() + 1 < filmsApiServise.getTotalPages()) {
+    if (filmsApiServise.getPage() + 2 < filmsApiServise.getTotalPages()) {
         document.querySelector('.pagination__item8').style.display = "block";
     } else {
         document.querySelector('.pagination__item8').style.display = "none";
@@ -49,6 +55,11 @@ export function markupPagination() {
         document.querySelector('.pagination__item10').style.display = "none";
     }
 
+    if (filmsApiServise.getPage() === filmsApiServise.getTotalPages()) {
+        document.querySelector('.pagination__button8').disabled = true;
+    } else {
+        document.querySelector('.pagination__button8').disabled = false;
+    }
 
 
     document.querySelector('.pagination__button3').textContent = `${filmsApiServise.getPage() - 2}`;

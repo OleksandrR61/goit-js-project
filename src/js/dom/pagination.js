@@ -10,6 +10,11 @@ export function pagination() {
 async function onClick(event) {
     event.preventDefault();
 
+    if (event.target.type != "submit") {
+        console.log("Нет");
+        return;
+    }
+
     let targetPage = filmsApiServise.getPage();
     
     if (event.target.classList.contains("pagination__button1")) {
