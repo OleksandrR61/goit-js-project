@@ -1,6 +1,7 @@
 import {filmsApiServise} from '../../index';
 
 export function markupPagination() {
+    //Скрытие ненужных кнопок
     if (filmsApiServise.getPage() === 1) {
         document.querySelector('.pagination__button1').disabled = true;
     } else {
@@ -61,7 +62,7 @@ export function markupPagination() {
         document.querySelector('.pagination__button8').disabled = false;
     }
 
-
+    //Заполнение значениями кнопки
     document.querySelector('.pagination__button3').textContent = `${filmsApiServise.getPage() - 2}`;
     document.querySelector('.pagination__button4').textContent = `${filmsApiServise.getPage() - 1}`;
     document.querySelector('.pagination__currentPage').textContent = `${filmsApiServise.getPage()}`;
