@@ -13,6 +13,14 @@
     }
 
     &__item {
+        display: flex;
+
+        justify-content: center;
+        align-content: center;
+
+        height: 40px;
+        width: 40px;
+
         &:not(:last-child) {
             margin-right: 6px;
             
@@ -34,8 +42,11 @@
     }
 
     &__button {
-        min-height: 40px;
-        min-width: 40px;
+        display: block;
+
+        cursor: pointer;
+        text-align: center;
+        padding: 13px;
 
         border-radius: 5px;
 

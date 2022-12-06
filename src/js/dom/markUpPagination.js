@@ -3,9 +3,9 @@ import {filmsApiServise} from '../../index';
 export function markupPagination() {
     //Скрытие ненужных кнопок
     if (filmsApiServise.getPage() === 1) {
-        document.querySelector('.pagination__button--button1').disabled = true;
+        document.querySelector('.pagination__button--button1').style.display = "none";
     } else {
-        document.querySelector('.pagination__button--button1').disabled = false;
+        document.querySelector('.pagination__button--button1').style.display = "block";
     }
 
     if (filmsApiServise.getPage() === 1) {
@@ -57,9 +57,9 @@ export function markupPagination() {
     }
 
     if (filmsApiServise.getPage() === filmsApiServise.getTotalPages()) {
-        document.querySelector('.pagination__button--button8').disabled = true;
+        document.querySelector('.pagination__button--button8').style.display = "none";
     } else {
-        document.querySelector('.pagination__button--button8').disabled = false;
+        document.querySelector('.pagination__button--button8').style.display = "block";
     }
 
     //Заполнение значениями кнопки

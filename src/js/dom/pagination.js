@@ -9,9 +9,10 @@ export function pagination() {
 
 async function onClick(event) {
     event.preventDefault();
+    console.log(event.target.tagName)
 
     //Защита от клика не в кнопку
-    if (event.target.tagName != "BUTTON" && event.target.tagName != "svg") {
+    if (event.target.tagName != "A" && !event.target.classList.contains("pagination__img")) {
         return;
     }
 
