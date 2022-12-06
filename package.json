@@ -2,10 +2,10 @@
   "name": "parcel-project-template",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://Ali-sia/filmoteka-team-5",
+  "homepage": "https://github.com/OleksandrR61/goit-js-project",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /filmoteka-team-5/"
+    "build": "parcel build src/*.html --public-url /goit-js-project/"
   },
   "repository": {
     "type": "git",
