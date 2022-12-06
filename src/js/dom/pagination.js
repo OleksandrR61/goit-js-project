@@ -9,22 +9,19 @@ export function pagination() {
 
 async function onClick(event) {
     event.preventDefault();
-    console.log("OOPS");
-    console.log(event.target);
 
     //Защита от клика не в кнопку
-    if (event.target.tagName != "BUTTON") {
+    if (event.target.tagName != "BUTTON" && event.target.tagName != "svg") {
         return;
     }
 
-    console.log("NORM");
-
     //Определение номера страницы назначения
     let targetPage = filmsApiServise.getPage();
-    
-    if (event.target.classList.contains("pagination__button--button1")) {
+    if (event.target.classList.contains("pagination__button--button1") || event.target.classList.contains("pagination__img1")) {
+        document.querySelector('.pagination__button--button1').blur();
         targetPage -= 1;
-    } else if (event.target.classList.contains("pagination__button--button8")) {
+    } else if (event.target.classList.contains("pagination__button--button8") || event.target.classList.contains("pagination__img2")) {
+        document.querySelector('.pagination__button--button8').blur();
         targetPage += 1;
     } else {
         targetPage = Number(event.target.textContent);
