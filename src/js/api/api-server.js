@@ -12,7 +12,7 @@ export default class FilmsApiService {
     this.genres = []
 
   }
-  async fetchPopularFilms() {
+  async fetchPopularFilms(page) {
     const URL = `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}&page=${this.page}`;
 
     const response = await axios.get(URL);
@@ -21,7 +21,7 @@ export default class FilmsApiService {
     return response.data.results;
   }
 
-getFilmById(id) {
+  getFilmById(id) {
     for (const film of this.data) {
       if (film.id === id) {
         return film
@@ -29,39 +29,35 @@ getFilmById(id) {
     }
   }
 
-  async getFilmByName() {
-    const URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${this.nameFilm}&page=${this.page}`;
+    async getFilmByName() {
+      const URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${this.nameFilm}&page=${this.page}`;
 
-    let { data: { results, total_pages } } = await axios.get(URL);
-    this.totalPages = total_pages;
+      let { data: { results, total_pages } } = await axios.get(URL);
+      this.totalPages = total_pages;
 
-    //Создание исключения при отсутсвии фильмов в базе
-    if (results.length === 0) {
-      throw new Error();
-    };
-    
-    //Добавление найденных фильмов в массив локальных данных
-    results.map(film => {
-      if (!this.getFilmById(film.id)) {
-        this.data.push(film);
-      }
-    });
-    
-    return results;
+      //Создание исключения при отсутсвии фильмов в базе
+      if (results.length === 0) {
+        throw new Error();
+      };
+      
+      //Добавление найденных фильмов в переменные массива
+      this.data = results;
+      
+      return results;
+    }
+
+  async fetchGenres() {
+    const URL = `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`;
+
+    const response = await axios.get(URL);
+    this.genres = response.data.genres;
+    return  response.data.genres;
   }
 
-async fetchGenres() {
-  const URL = `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`;
-
-  const response = await axios.get(URL);
-  this.genres = response.data.genres;
-  return  response.data.genres;
+  getTotalPages() {
+      return this.totalPages
   }
-
-getTotalPages() {
-    return this.totalPages
-  }
-
+  
   getPage() {
     return this.page;
   }

@@ -1,26 +1,30 @@
 import {filmsApiServise} from '../../index';
+import { getElement } from './getElement';
 import { resetMarkup } from './show-popular-films';
 import { appendPopularMarkup } from './show-popular-films';
-import {markupPagination} from './markUpPagination';
 
 export function pagination() {
-    document.querySelector('.pagination__list').addEventListener('click', onClick);
+    document.querySelector('.pagination').addEventListener('click', onClick);
 }
 
 async function onClick(event) {
     event.preventDefault();
+    console.log("OOPS");
+    console.log(event.target);
 
     //Защита от клика не в кнопку
-    if (event.target.type != "submit") {
+    if (event.target.tagName != "BUTTON") {
         return;
     }
+
+    console.log("NORM");
 
     //Определение номера страницы назначения
     let targetPage = filmsApiServise.getPage();
     
-    if (event.target.classList.contains("pagination__button1")) {
+    if (event.target.classList.contains("pagination__button--button1")) {
         targetPage -= 1;
-    } else if (event.target.classList.contains("pagination__button8")) {
+    } else if (event.target.classList.contains("pagination__button--button8")) {
         targetPage += 1;
     } else {
         targetPage = Number(event.target.textContent);
@@ -31,6 +35,8 @@ async function onClick(event) {
 
     //Очистка разметки секции карточек
     resetMarkup();
+    event.target.blur();
+    getElement(".pagination__container").style.display = "none";
 
     //Подготовка к разметке страницы
     let response = {};
@@ -44,5 +50,4 @@ async function onClick(event) {
 
     //Разметка страницы и перерисовка пагинации
     appendPopularMarkup(response);
-    markupPagination();
 }

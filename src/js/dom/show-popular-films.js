@@ -1,5 +1,7 @@
 // відмалювати популярні фільми
 import {list} from '../refs'
+import {markupPagination} from './markUpPagination';
+
 export function createPopularMarkup(data) {
   return data
     .map(
@@ -78,7 +80,10 @@ export function resetMarkup() {
     list.innerHTML='';
 }
 export function appendPopularMarkup(data) {
+  document.querySelector('.pagination__container').style.display = "none";
   list.insertAdjacentHTML('beforeend', createPopularMarkup(data));
+  markupPagination();
+  document.querySelector('.pagination__container').style.display = "block";
 }
 
 export function appendErrorMessage() {

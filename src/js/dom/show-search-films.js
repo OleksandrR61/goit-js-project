@@ -3,18 +3,17 @@ import { getElement } from "./getElement";
 import { resetMarkup } from './show-popular-films';
 import { filmsApiServise } from "../../index";
 import { appendPopularMarkup } from './show-popular-films';
-import {markupPagination} from './markUpPagination';
 
 export function searchFilms() {
-    getElement("#searchForm").reset();
     if (getElement("#searchForm")) {
+        getElement("#searchForm").reset();
         getElement("#searchForm").addEventListener('submit', onSearch);
     }
 }
 
 function onSearch(event) {
     event.preventDefault();
-        
+
     filmsApiServise.setPage(1);
     filmsApiServise.setIsPopular(false);
 
@@ -55,5 +54,4 @@ async function showFilms() {
 
     resetMarkup();
     appendPopularMarkup(response);
-    markupPagination();
 }

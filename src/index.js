@@ -16,7 +16,6 @@ searchFilms();
 import FilmsApiService from './js/api/api-server';
 import { appendPopularMarkup, appendErrorMessage } from './js/dom/show-popular-films';
 import { resetMarkup } from './js/dom/show-popular-films';
-import {markupPagination} from './js/dom/markUpPagination';
 export const filmsApiServise = new FilmsApiService();
 
 import './js/dom/modal';
@@ -41,8 +40,6 @@ async function firstLoadPage() {
         console.log(error.message)
         appendErrorMessage()
     }
-    markupPagination();
-    
 
    //доступ до фільму по ID без повторного запиту на сервер, ID зберігається в дата атрибуті на карточці фільму --> data-films-id
     // let filmById = filmsApiServise.getFilmById(897192) 
