@@ -13,12 +13,20 @@
     border-right: 6px solid transparent;
     box-sizing: border-box;
     animation: rotation 1s linear infinite;
-    transition: opacity 0.75s ease infinite;
+    // transition: opacity 1s ease infinite;
+    transition: opacity 1s ease infinite,
+                visibility 1s 0s ease infinite;
+                
+    opacity: 1;
+    visibility: visible;
 }
 
 .loader--hidden {
     opacity: 0;
     visibility: hidden;
+
+    transition: opacity 1s ease infinite,
+                visibility 1s 0s ease infinite;
 }
 
 .loader::after {

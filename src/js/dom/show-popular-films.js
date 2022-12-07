@@ -1,11 +1,13 @@
 // відмалювати популярні фільми
-import {list} from '../refs'
-import {markupPagination} from './markUpPagination';
+import { filmsApiServise } from '../..';
+import { list } from '../refs';
+import { markupPagination } from './markUpPagination';
+import {showLoader, hideLoader} from './loader';
 
 export function createPopularMarkup(data) {
   return data
     .map(
-      ({ poster_path, title, genre_ids, release_date, id }) => 
+      ({ poster_path, title, genre_ids, release_date, id }) =>
         ` <article class="films__film-card" data-films-id="${id}">
         <img
           class="films__img"
@@ -28,7 +30,9 @@ export function createPopularMarkup(data) {
         <div class="films__info">
           <h2 class="films__title">${title}</h2>
 
-          <p class="films__genres">${genresList(genre_ids)} ${generateYear(release_date)}</p>
+          <p class="films__genres">${genresList(genre_ids)} ${generateYear(
+          release_date
+        )}</p>
         </div>
       </article>
       `
@@ -67,25 +71,44 @@ function genresList(array) {
   return genre_names;
 }
 
-function generateYear(release_date){
-  let year = "";
+function generateYear(release_date) {
+  let year = '';
   if (!release_date) {
-    return year
+    return year;
   }
-  year = ' | ' + release_date?.slice(0, 4)
-  return year
+  year = ' | ' + release_date?.slice(0, 4);
+  return year;
 }
 
 export function resetMarkup() {
-    list.innerHTML='';
+  list.innerHTML = '';
 }
 export function appendPopularMarkup(data) {
-  document.querySelector('.pagination__container').style.display = "none";
+  showLoader();
+  if (!data || data.length === 0) {
+    resetMarkup()
+    document.querySelector('.pagination__container').style.display = 'none';
+    appendEmptyStorageMessage();
+    hideLoader();
+    return
+  }
+  document.querySelector('.pagination__container').style.display = 'none';
   list.insertAdjacentHTML('beforeend', createPopularMarkup(data));
   markupPagination();
-  document.querySelector('.pagination__container').style.display = "block";
+  document.querySelector('.pagination__container').style.display = 'block';
+
+  hideLoader();
 }
 
 export function appendErrorMessage() {
-  list.insertAdjacentHTML('beforeend',  '<p>Unable to load images, please try again later.</p>');
+  list.insertAdjacentHTML(
+    'beforeend',
+    '<p>Unable to load images, please try again later.</p>'
+  );
+}
+  export function appendEmptyStorageMessage() {
+  list.insertAdjacentHTML(
+    'beforeend',
+    '<p>Hey, could you please add some movies to the list?</p>'
+  )
 }
