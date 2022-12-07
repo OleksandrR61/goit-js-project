@@ -1,4 +1,4 @@
-const loader = document.querySelector('.loader');
+const loader = document.querySelector('.loader__bg');
 
 export function showLoader() {
   loader.classList.remove('loader--hidden');
